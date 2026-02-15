@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import random
 import matplotlib.pyplot as plt
 
@@ -21,7 +20,6 @@ def monte_carlo_simulation(arrival_rate, service_rate, num_simulations):
         arrival_time = service_end_time - service_time
         waiting_time = max(0, arrival_time - service_end_time + service_time)
 
-        # Сохранение статистики
         waiting_times.append(waiting_time)
         total_time_spent += waiting_time + service_time
 
@@ -42,12 +40,12 @@ def monte_carlo_simulation(arrival_rate, service_rate, num_simulations):
     )
 
 def visualize_simulation(waiting_times):
-    plt.rcParams['font.family'] = 'DejaVu Sans'  # Замените 'DejaVu Sans' на имя вашего шрифта, поддерживающего русский язык
-    plt.rcParams['font.size'] = 12  # Размер шрифта
+    plt.rcParams['font.family'] = 'DejaVu Sans'  
+    plt.rcParams['font.size'] = 12 
 
     plt.figure(figsize=(10, 6))
     plt.hist(waiting_times, bins=30, density=True, alpha=0.7, color='blue')
-    plt.title('Гистограмма времени ожидания в очереди')  # Гистограмма времени ожидания в очереди
+    plt.title('Гистограмма времени ожидания в очереди')  
     plt.xlabel('Время ожидания')  # Время ожидания
     plt.ylabel('Плотность вероятности')  # Плотность вероятности
     plt.grid(True)
@@ -65,9 +63,10 @@ if __name__ == "__main__":
         arrival_rate, service_rate, num_simulations
     )
 
-    print(f"Среднее время ожидания в очереди: {avg_waiting_time:.2f} единиц времени")  # Среднее время ожидания в очереди
-    print(f"Среднее время в системе: {avg_system_time:.2f} единиц времени")  # Среднее время в системе
-    print(f"Средняя длина очереди: {avg_queue_length:.2f} заявок")  # Средняя длина очереди
-    print(f"Загрузка системы: {system_utilization:.2%}")  # Загрузка системы
+    print(f"Среднее время ожидания в очереди: {avg_waiting_time:.2f} единиц времени")  
+    print(f"Среднее время в системе: {avg_system_time:.2f} единиц времени")  
+    print(f"Средняя длина очереди: {avg_queue_length:.2f} заявок")  
+    print(f"Загрузка системы: {system_utilization:.2%}")  
 
     visualize_simulation(waiting_times)
+
