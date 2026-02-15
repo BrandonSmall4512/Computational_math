@@ -12,12 +12,12 @@ class Server:
         self.max_service_time = max_service_time
         self.total_clients = 0
         self.served_clients = 0
-        self.queue_lengths = []  # Список для отслеживания длины очереди на сервере
+        self.queue_lengths = [] 
 
     def serve(self, client):
         yield self.env.timeout(random.uniform(self.min_service_time, self.max_service_time))
         self.served_clients += 1
-        self.queue_lengths.append(len(self.server.queue))  # Добавляем текущую длину очереди в список
+        self.queue_lengths.append(len(self.server.queue)) 
 
 def client_generator(env, servers):
     client_id = 1
@@ -59,17 +59,14 @@ for server in servers:
     served += server.served_clients
 print(f"На всех серверах общий процент обслуженных: {(served / total) * 100} %")
 
-# Визуализация
+
 server_indices = np.arange(len(servers))
 
-# Создание новой фигуры для графиков
-fig, axs = plt.subplots(2, 1, figsize=(8, 10))  # 2 строки, 1 столбец
+fig, axs = plt.subplots(2, 1, figsize=(8, 10)) 
 
-# График общего количества и обслуженных клиентов для каждого сервера
 total_clients_per_server = [server.total_clients for server in servers]
 served_clients_per_server = [server.served_clients for server in servers]
 
-# Построение первого графика (Общее количество и обслужено клиентов)
 axs[0].bar(server_indices - 0.2, total_clients_per_server, width=0.4, label='Общее количество клиентов', alpha=0.6)
 axs[0].bar(server_indices + 0.2, served_clients_per_server, width=0.4, label='Обслужено клиентов', alpha=0.6)
 axs[0].set_xlabel('Сервер')
@@ -79,7 +76,7 @@ axs[0].set_xticks(server_indices)
 axs[0].set_xticklabels([f'Сервер {i+1}' for i in range(len(servers))])
 axs[0].legend()
 
-# Построение второго графика (Длина очереди на каждом сервере)
+
 for server in servers:
     axs[1].plot(server.queue_lengths, label=f'Сервер {server.server_number}')
 axs[1].set_xlabel('Время')
@@ -87,9 +84,9 @@ axs[1].set_ylabel('Длина очереди')
 axs[1].set_title('Длина очереди на серверах')
 axs[1].legend()
 
-# Показать оба графика
-plt.tight_layout()  # Распределить графики равномерно на рисунке
+plt.tight_layout()  
 plt.show()
+
 
 
 
