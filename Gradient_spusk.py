@@ -13,8 +13,8 @@ def derivative_y(x, y):
 
 
 def gradient_descent(learning_rate, epochs):
-    x = 4  # Начальное значение x
-    y = 3  # Начальное значение y
+    x = 4  
+    y = 3  
     x_history = [x]
     y_history = [y]
     
@@ -32,7 +32,6 @@ def gradient_descent(learning_rate, epochs):
 learning_rate = 0.02
 epochs = 10
 
-# Выполнение градиентного спуска
 history_x, history_y = gradient_descent(learning_rate, epochs)
 
 print('x0 = ', history_x[-1])
@@ -41,8 +40,6 @@ print('y0 = ', history_y[-1])
 z = function(history_x[-1], history_y[-1])
 print('z0 = ', z)
 
-
-# Визуализация
 x_vals = np.linspace(-2, 5, 100)
 y_vals = np.linspace(-2, 5, 100)
 X, Y = np.meshgrid(x_vals, y_vals)
@@ -59,3 +56,4 @@ ax.set_zlabel('z')
 plt.title('Градиентный спуск по функции')
 plt.legend()
 plt.show()
+
