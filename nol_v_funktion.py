@@ -11,7 +11,6 @@ def chord_method(func, a, b, epsilon=1e-6, max_iterations=1000):
         return None
 
     iterations = 0
-    # функция получения новой границы интервала
     c = a - (b - a) * func(a) / (func(b)-func(a))
     
     while abs(b - a) > epsilon and iterations < max_iterations:
@@ -51,7 +50,6 @@ def midpoint_method(func, a, b, epsilon=1e-9, max_iterations=1000):
     return (a + b) / 2, iterations
 
 
-# Задаем интервал и точность
 a, b = -1, 18
 epsilon = 1e-6
 
@@ -67,7 +65,7 @@ else:
 a, b = -1, 18
 epsilon = 1e-6
 
-# Находим корень методом серединных отрезков
+
 
 root2, iterations2 = midpoint_method(func, a, b, epsilon)
 
@@ -77,12 +75,11 @@ if root2 is not None:
 else:
     print("Не удалось найти нуль функции на заданном интервале методом хорд")
 
-# Визуализация графика функции
 x = np.linspace(a, b, 1000)
 y = func(x)
 
 plt.figure(figsize=(8, 6))
-plt.plot(x, y, label='f(x) = x^3 - 2x - 5')  # Измените метку и функцию при необходимости
+plt.plot(x, y, label='f(x) = x^3 - 2x - 5') 
 plt.axhline(0, color='black',linewidth=0.5)
 plt.axvline(root2, color='red', linestyle='--', label='Нуль функции - 1')
 plt.title('График функции')
@@ -91,4 +88,5 @@ plt.ylabel('f(x)')
 plt.legend()
 plt.grid(True)
 plt.show()
+
 
